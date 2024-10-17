@@ -27,11 +27,13 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.SampleService" />
+        <service
+            android:name=".service.SampleService"
+            android:foregroundServiceType="health" />
         <service
             android:name=".job.SampleJob"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="true" />
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service
             android:name=".service.SampleIntentService"

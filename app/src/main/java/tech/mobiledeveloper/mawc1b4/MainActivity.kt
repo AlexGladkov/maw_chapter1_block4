@@ -32,6 +32,7 @@ import tech.mobiledeveloper.mawc1b4.alarm.SampleAlarm
 import tech.mobiledeveloper.mawc1b4.job.SampleJob
 import tech.mobiledeveloper.mawc1b4.service.SampleIntentService
 import tech.mobiledeveloper.mawc1b4.service.SampleService
+import tech.mobiledeveloper.mawc1b4.service.ServiceType
 import tech.mobiledeveloper.mawc1b4.ui.theme.MAWC1B4Theme
 import tech.mobiledeveloper.mawc1b4.workmanager.SampleWorkManager
 import java.util.Calendar
@@ -53,6 +54,17 @@ class MainActivity : ComponentActivity() {
                         ) {
                             RegularButton("Start Regular Service") {
                                 val intent = Intent(applicationContext, SampleService::class.java)
+                                val bundle = Bundle()
+                                bundle.putInt(SampleService.SERVICE_TYPE, ServiceType.Regular.value)
+                                intent.putExtras(bundle)
+                                startService(intent)
+                            }
+                            Spacer(modifier = Modifier.padding(top = 20.dp))
+                            RegularButton("Start Regular Service") {
+                                val intent = Intent(applicationContext, SampleService::class.java)
+                                val bundle = Bundle()
+                                bundle.putInt(SampleService.SERVICE_TYPE, ServiceType.Foreground.value)
+                                intent.putExtras(bundle)
                                 startService(intent)
                             }
                             Spacer(modifier = Modifier.padding(top = 20.dp))
